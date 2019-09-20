@@ -6,6 +6,22 @@
 		//Hàm kết nối.
 		public function __construct()
 		{
+			$connectstr_dbhost = '';
+			$connectstr_dbname = '';
+			$connectstr_dbusername = '';
+			$connectstr_dbpassword = '';
+ 
+			foreach ($_SERVER as $key => $value) {
+			    if (strpos($key, "MYSQLCONNSTR_localdb") !== 0) {
+				continue;
+			    }
+    
+			    echo $connectstr_dbhost = preg_replace("/^.*Data Source=(.+?);.*$/", "\\1", $value)."\n";
+			    echo $connectstr_dbname = preg_replace("/^.*Database=(.+?);.*$/", "\\1", $value)."\n";
+			    echo $connectstr_dbusername = preg_replace("/^.*User Id=(.+?);.*$/", "\\1", $value)."\n";
+			    echo $connectstr_dbpassword = preg_replace("/^.*Password=(.+?)$/", "\\1", $value)."\n";
+			}
+			die();
 			$this->conn = new mysqli("localhost", "tamtit", "12345", "foody_thainguyen") or die("Loi ket noi");
 			$this->conn->set_charset("UTF8");
 		}
