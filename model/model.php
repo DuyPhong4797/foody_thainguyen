@@ -22,7 +22,7 @@
 			    $connectstr_dbpassword = preg_replace("/^.*Password=(.+?)$/", "\\1", $value);
 			}
 			
-			$this->conn = new mysqli("localhost", $connectstr_dbusername, $connectstr_dbpassword, "foody_thainguyen") or die("Loi ket noi");
+			$this->conn = new mysqli($connectstr_dbhost, $connectstr_dbusername, $connectstr_dbpassword, $connectstr_dbname) or die("Loi ket noi");
 			$this->conn->set_charset("UTF8");
 		}
 
