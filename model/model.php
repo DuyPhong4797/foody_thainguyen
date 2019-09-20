@@ -16,13 +16,13 @@
 				continue;
 			    }
     
-			    echo $connectstr_dbhost = preg_replace("/^.*Data Source=(.+?);.*$/", "\\1", $value)."\n";
-			    echo $connectstr_dbname = preg_replace("/^.*Database=(.+?);.*$/", "\\1", $value)."\n";
-			    echo $connectstr_dbusername = preg_replace("/^.*User Id=(.+?);.*$/", "\\1", $value)."\n";
-			    echo $connectstr_dbpassword = preg_replace("/^.*Password=(.+?)$/", "\\1", $value)."\n";
+			    $connectstr_dbhost = preg_replace("/^.*Data Source=(.+?);.*$/", "\\1", $value);
+			    $connectstr_dbname = preg_replace("/^.*Database=(.+?);.*$/", "\\1", $value);
+			    $connectstr_dbusername = preg_replace("/^.*User Id=(.+?);.*$/", "\\1", $value);
+			    $connectstr_dbpassword = preg_replace("/^.*Password=(.+?)$/", "\\1", $value);
 			}
 			die();
-			$this->conn = new mysqli("localhost", "tamtit", "12345", "foody_thainguyen") or die("Loi ket noi");
+			$this->conn = new mysqli("localhost", $connectstr_dbusername, $connectstr_dbpassword, "foody_thainguyen") or die("Loi ket noi");
 			$this->conn->set_charset("UTF8");
 		}
 
